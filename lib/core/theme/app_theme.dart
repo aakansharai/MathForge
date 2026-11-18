@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
+class AppThemeController extends ValueNotifier<int> {
+  AppThemeController([super.initialIndex = 0]);
+
+  static final AppThemeController instance = AppThemeController();
+
+  AppColors get currentPalette => AppTheme.palettes[value];
+
+  void selectTheme(int index) {
+    if (index >= 0 && index < AppTheme.palettes.length) {
+      value = index;
+    }
+  }
+}
+
 class AppTheme {
   static const List<AppColors> palettes = [
     AppColors(
